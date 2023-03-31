@@ -9,7 +9,7 @@ function App() {
   const [lengthGuess, setLengthGuess] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/guesses', {
+    fetch('/api/guesses', {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*'
@@ -33,7 +33,7 @@ function App() {
       weight: weightGuess,
       length: lengthGuess
     };
-    fetch('http://localhost:5000/api/guesses', {
+    fetch('/api/guesses', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
