@@ -1,0 +1,136 @@
+body {
+  background-image: url('subtle-prism.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.App {
+  text-align: center;
+}
+
+/* label {
+  margin: 1rem;
+} */
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#titleimg {
+  max-width: 100px;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* width: 80%; */
+  align-items: center;
+  /* justify-content: center; */
+}
+
+form label input{
+  height: 2rem;
+  margin: 0px 0px 0px 15px;
+  text-align: center;
+  font-size: large;
+  border-radius: 8px;
+  border:rgba(0, 0, 0, 0.15);
+}
+
+#guesses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.styled-table {
+  border-collapse: separate;
+  margin: 25px 0;
+  font-size: 0.9em;
+  /* font-family: sans-serif; */
+  width: 90%;
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f5f5fa;
+}
+
+.styled-table thead tr {
+  /* background-color: #8b8b8b; */
+  color: #1d1d1d;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #424242;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+  border-bottom: 1px solid #24a186;
+  /* background-color: #c0c0c0;
+  border-radius: 8px; */
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  /* background-color: #c9c9c9; */
+  border-bottom: 1px solid #8d3333;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* CSS */
+.button-67 {
+  align-items: center;
+  background: #f5f5fa;
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #303030;
+  cursor: pointer;
+  display: flex;
+  /* font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace; */
+  font-size: medium;
+  font-weight: bold;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 10px;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: max-content;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+@media (min-width: 768px) {
+  .button-67 {
+    padding: 24px;
+  }
+
+  .buttons {
+    max-width: 1200px;
+  }
+
+  .styled-table {
+    max-width: 1200px;
+  }
+}
