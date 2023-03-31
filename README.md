@@ -4,4 +4,6 @@
 
 Built with a React frontend and a flask backend, using an sqlite database. 
 
+![Screenshot](docs/screenshot.jpeg)
+
 ### TODO: Write set up instructions for development
