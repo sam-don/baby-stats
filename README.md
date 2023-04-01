@@ -58,7 +58,7 @@ WantedBy=multi-user.target
 - Start service with `systemctl start baby-stats-api`
 
 - Move to the 'client' folder and run `npm run build` 
-- Copy the contents of the build folder to the public html folder with `cp build/* /var/www/html`
+- Copy the contents of the build folder to the public html folder with `cp -r build/* /var/www/html`
 - Modify 'etc/nginx/site-available/default' to route api requests internally by adding this under the root location:
 ```
 location /api {
