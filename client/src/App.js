@@ -75,7 +75,7 @@ function App() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form id="guess-form" onSubmit={handleSubmit}>
         <label>
           Your Name:
           <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
@@ -104,7 +104,7 @@ function App() {
       <hr />
       <div id="container" class="hidden">
         <div id="guesses">
-          <h2>Guesses:</h2>
+          {/* <h2>Guesses:</h2> */}
           {/* <ul>
             {guesses.map((guess, index) => (
               <li key={index}>

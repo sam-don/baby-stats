@@ -36,6 +36,7 @@ form {
 }
 
 form label input{
+  flex-basis: 0;
   height: 2rem;
   margin: 0px 0px 0px 15px;
   text-align: center;
