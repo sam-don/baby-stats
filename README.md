@@ -38,7 +38,7 @@ Here are some brief setup steps that I took:
 
 - Clone repo to server
 - Create virtual env from 'api' directory and install requirements
-- Create a file at 'etc/systemd/system/baby-stats-api.service' and enter the following:
+- Create a file at 'etc/systemd/system/baby-stats-api.service' and enter the following (update the paths to suit your setup):
 ```               
 [Unit]
 Description=A simple flask API for a baby stats game
@@ -59,7 +59,7 @@ WantedBy=multi-user.target
 
 - Move to the 'client' folder and run `npm run build` 
 - Copy the contents of the build folder to the public html folder with `cp -r build/* /var/www/html`
-- Modify 'etc/nginx/site-available/default' to route api requests internally by adding this under the root location:
+- Modify '/etc/nginx/sites-available/default' to route api requests internally by adding this under the root location. You can also find my config in the 'client' directory under 'nginx.default.conf':
 ```
 location /api {
         include proxy_params;
@@ -67,3 +67,4 @@ location /api {
 }
 ```
 - Reload nginx with `systemctl reload nginx`
+- The site will now be served on port 80 and should be accessible on your network!
