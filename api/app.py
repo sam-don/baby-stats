@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import datetime
+from  dateutil.parser import *
 
 app = Flask(__name__)
 # app = Flask(__name__, static_folder='../build', static_url_path='/')
@@ -13,15 +14,16 @@ db = SQLAlchemy(app)
 class Guesses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
-    dob = db.Column(db.Date, nullable=False)
+    dob = db.Column(db.DateTime, nullable=False)
     weight = db.Column(db.Float, nullable=False)
     length = db.Column(db.Float, nullable=False)
 
     def serialize(self):
+        print(self.dob)
         return {
             'id': self.id,
             'name': self.name,
-            'dob': self.dob.strftime('%d/%m'),
+            'dob': self.dob.strftime('%d/%m %H:%M'),
             'weight': self.weight,
             'length': self.length
         }
@@ -35,7 +37,9 @@ def get_guesses():
 def create_guess():
     print(request.json)
     name = request.json['name']
-    dob = datetime.datetime.strptime(request.json['dob'], '%Y-%m-%d')
+    # dob = datetime.datetime.strptime(request.json['dob'], '%Y-%m-%dT%H:%M')
+    isodate = parse(request.json['dob'])
+    dob = isodate
     weight = request.json['weight']
     length = request.json['length']
     guess = Guesses(name=name, dob=dob, weight=weight, length=length)

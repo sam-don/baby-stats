@@ -78,22 +78,28 @@ function App() {
       <form id="guess-form" onSubmit={handleSubmit}>
         <label>
           Your Name:
-          <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+          <input type="text" value={name} onChange={(event) => setName(event.target.value)} required />
         </label>
         <br />
         <label>
           Birth Date:
-          <input type="date" value={dobGuess} onChange={(event) => setDobGuess(event.target.value)} />
+          <input 
+            type="datetime-local" 
+            min="2023-05-01T00:00"
+            max="2023-06-30T23:59"
+            value={dobGuess} 
+            onChange={(event) => setDobGuess(event.target.value)} 
+            required />
         </label>
         <br />
         <label>
           Weight (kg):
-          <input type="number" value={weightGuess} onChange={(event) => setWeightGuess(event.target.value)} />
+          <input type="number" value={weightGuess} onChange={(event) => setWeightGuess(event.target.value)} required />
         </label>
         <br />
         <label>
           Length (cm):
-          <input type="number" value={lengthGuess} onChange={(event) => setLengthGuess(event.target.value)} />
+          <input type="number" value={lengthGuess} onChange={(event) => setLengthGuess(event.target.value)} required />
         </label>
         <br />
         <div class="buttons">
