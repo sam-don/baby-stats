@@ -103,12 +103,12 @@ function App() {
         <br />
         <label>
           Weight (kg):
-          <input type="number" placeholder="eg. 3.42" value={weightGuess} onChange={(event) => setWeightGuess(event.target.value)} required />
+          <input type="number" value={weightGuess} onChange={(event) => setWeightGuess(event.target.value)} required />
         </label>
         <br />
         <label>
           Length (cm):
-          <input type="number" placeholder="eg. 49.5" value={lengthGuess} onChange={(event) => setLengthGuess(event.target.value)} required />
+          <input type="number" value={lengthGuess} onChange={(event) => setLengthGuess(event.target.value)} required />
         </label>
         <br />
         <div className="buttons">
