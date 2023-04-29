@@ -14,16 +14,17 @@ db = SQLAlchemy(app)
 class Guesses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
-    dob = db.Column(db.DateTime, nullable=False)
+    dob = db.Column(db.Date, nullable=False)
+    time = db.Column(db.String, nullable=False)
     weight = db.Column(db.Float, nullable=False)
     length = db.Column(db.Float, nullable=False)
 
     def serialize(self):
-        print(self.dob)
         return {
             'id': self.id,
             'name': self.name,
-            'dob': self.dob.strftime('%d/%m %H:%M'),
+            'dob': self.dob.strftime('%d/%m'),
+            'time': self.time,
             'weight': self.weight,
             'length': self.length
         }
@@ -40,9 +41,10 @@ def create_guess():
     # dob = datetime.datetime.strptime(request.json['dob'], '%Y-%m-%dT%H:%M')
     isodate = parse(request.json['dob'])
     dob = isodate
+    time = request.json['time']
     weight = request.json['weight']
     length = request.json['length']
-    guess = Guesses(name=name, dob=dob, weight=weight, length=length)
+    guess = Guesses(name=name, dob=dob, time=time, weight=weight, length=length)
     db.session.add(guess)
     db.session.commit()
     return jsonify(guess.serialize()), 201

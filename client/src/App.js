@@ -5,6 +5,7 @@ function App() {
   const [guesses, setGuesses] = useState([]);
   const [name, setName] = useState('');
   const [dobGuess, setDobGuess] = useState('');
+  const [timeGuess, setTimeGuess] = useState('');
   const [weightGuess, setWeightGuess] = useState('');
   const [lengthGuess, setLengthGuess] = useState('');
 
@@ -16,10 +17,7 @@ function App() {
       }
     })
       .then(response => response.json())
-      .then(data => {
-        setGuesses(data)
-        console.log(data)
-      });
+      .then(data => { setGuesses(data) });
   }, []);
 
   const handleSubmit = (event) => {
@@ -30,6 +28,7 @@ function App() {
     const newGuess = {
       name: name,
       dob: dobGuess,
+      time: timeGuess,
       weight: weightGuess,
       length: lengthGuess
     };
@@ -47,6 +46,7 @@ function App() {
         setGuesses([...guesses, data]);
         setName('');
         setDobGuess('');
+        setTimeGuess('');
         setWeightGuess('');
         setLengthGuess('');
       })
@@ -84,11 +84,20 @@ function App() {
         <label>
           Birth Date:
           <input 
-            type="datetime-local" 
-            min="2023-05-01T00:00"
-            max="2023-06-30T23:59"
+            type="date" 
+            min="2023-05-01"
+            max="2023-06-30"
             value={dobGuess} 
             onChange={(event) => setDobGuess(event.target.value)} 
+            required />
+        </label>
+        <br />
+        <label>
+          Birth Time:
+          <input 
+            type="time"
+            value={timeGuess} 
+            onChange={(event) => setTimeGuess(event.target.value)} 
             required />
         </label>
         <br />
@@ -102,13 +111,13 @@ function App() {
           <input type="number" value={lengthGuess} onChange={(event) => setLengthGuess(event.target.value)} required />
         </label>
         <br />
-        <div class="buttons">
-          <button class="button-67" onClick={handleShowGuesses}>Show Guesses</button>
-          <button class="button-67" type="submit">Submit Guess</button>
+        <div className="buttons">
+          <button className="button-67" onClick={handleShowGuesses}>Show Guesses</button>
+          <button className="button-67" type="submit">Submit Guess</button>
         </div>
       </form>
       <hr />
-      <div id="container" class="hidden">
+      <div id="container" className="hidden">
         <div id="guesses">
           {/* <h2>Guesses:</h2> */}
           {/* <ul>
@@ -121,11 +130,12 @@ function App() {
               </li>
             ))}
           </ul> */}
-          <table class="styled-table">
+          <table className="styled-table">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Birth Date</th>
+                <th>Birth Time</th>
                 <th>Weight</th>
                 <th>Length</th>
               </tr>
@@ -135,6 +145,7 @@ function App() {
                 <tr key={index}>
                   <td>{guess.name}</td>
                   <td>{guess.dob}</td>
+                  <td>{guess.time}</td>
                   <td>{guess.weight}</td>
                   <td>{guess.length}</td>
                 </tr>
